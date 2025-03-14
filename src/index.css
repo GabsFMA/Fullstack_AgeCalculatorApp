@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #DBDBDB;
+}
+
+html, body {
+  height: 100%; 
+  margin: 0;    
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+
