@@ -5,13 +5,17 @@ interface YoProps {
     dmy: string;
 }
 
-function Yo({ quantity, dmy }: YoProps) {
-    return(
-        <div className="flex flex-row gap-1.5 ml-8 mt-8">
-            <span className="text-[#C64CFF] text-8xl font-bold">{quantity}</span>
-            <span className="text-8xl font-bold">{dmy}</span>
-        </div>
-    )
-}
+function Yo({ quantity, dmy }) {
+    return (
+      <div className="flex flex-row items-end gap-2 lg:gap-4">
+        <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-[#C64CFF]">
+          {quantity}
+        </span>
+        <span className="text-6xl md:text-7xl lg:text-8xl font-bold">
+          {dmy}
+        </span>
+      </div>
+    );
+  }
 
 export default Yo;

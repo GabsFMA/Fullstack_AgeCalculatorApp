@@ -86,10 +86,10 @@ function App() {
   };
 
   return (
-    <div className="bg-[#fff] w-[900px] h-[600px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-[192px]">
-      <div className="m-16 flex flex-col gap-6">
+    <div className="bg-[#fff] w-full max-w-[1000px] h-[650px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-[100px] lg:rounded-br-[100px]">
+      <div className="m-6 md:m-12 lg:m-16 flex flex-col gap-4 lg:gap-6">
         <form onSubmit={handleSubmit} noValidate>
-          <div className="flex flex-row gap-8 w-full">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 w-full">
             {DMY.map((item) => (
               <Dmy
                 key={item.key}
@@ -103,21 +103,23 @@ function App() {
               />
             ))}
           </div>
-            <div className="relative mt-8">
-            <hr className="border-[#6F6E6E]" />
+
+          <div className="relative mt-6 md:mt-8 h-16 md:h-24">
+            <hr className="border-[#6F6E6E] absolute top-1/2 w-full" />
             <button
               type="submit"
-              className="absolute top-1/2 right-0 flex items-center justify-center transform -translate-y-1/2 cursor-pointer"
+              className="absolute top-1/2 left-1/2 md:left-auto md:right-0 transform -translate-x-1/2 md:translate-x-0 -translate-y-1/2"
             >
               <img
                 src="images/icon-arrow.svg"
                 alt="icon-arrow"
-                className="bg-[#C64CFF] rounded-full p-2 hover:bg-black ease-out duration-300"
+                className="bg-[#C64CFF] rounded-full p-2 md:p-3 lg:p-4 hover:bg-black ease-out duration-300 w-12 h-12 md:w-16 md:h-16"
               />
             </button>
           </div>
         </form>
-        <div className="flex flex-col">
+
+        <div className="flex flex-col gap-1 md:gap-2 lg:gap-4 mt-4 md:mt-8">
           <Yo quantity={age.year} dmy="anos" />
           <Yo quantity={age.month} dmy="meses" />
           <Yo quantity={age.day} dmy="dias" />
