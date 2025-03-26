@@ -1,38 +1,51 @@
-import { useState } from 'react';
-import Dmy from './components/dmy';
-import Yo from './components/yo';
+import { useState } from "react";
+import Dmy from "./components/dmy";
+import Yo from "./components/yo";
 
 function App() {
-  const [inputs, setInputs] = useState({ day: '', month: '', year: '' });
-  const [errors, setErrors] = useState({ day: '', month: '', year: '', generic: '' });
-  const [age, setAge] = useState({ day: '--', month: '--', year: '--' });
+  const [inputs, setInputs] = useState({ day: "", month: "", year: "" });
+  const [errors, setErrors] = useState({
+    day: "",
+    month: "",
+    year: "",
+    generic: "",
+  });
+  const [age, setAge] = useState({ day: "--", month: "--", year: "--" });
 
   const DMY = [
     { name: "DAY", placeholder: "DD", key: "day", min: 1, max: 31 },
     { name: "MONTH", placeholder: "MM", key: "month", min: 1, max: 12 },
-    { name: "YEAR", placeholder: "YYYY", key: "year", min: 1900, max: new Date().getFullYear() }
+    {
+      name: "YEAR",
+      placeholder: "YYYY",
+      key: "year",
+      min: 1900,
+      max: new Date().getFullYear(),
+    },
   ];
 
   const validateInputs = () => {
-    const newErrors = { day: '', month: '', year: '', generic: '' };
+    const newErrors = { day: "", month: "", year: "", generic: "" };
     const today = new Date();
     const currentYear = today.getFullYear();
 
-    if (!inputs.day) newErrors.day = 'Campo obrigatório';
-    else if (inputs.day < 1 || inputs.day > 31) newErrors.day = 'Insira um dia válido';
+    if (!inputs.day) newErrors.day = "Campo obrigatório";
+    else if (inputs.day < 1 || inputs.day > 31)
+      newErrors.day = "Insira um dia válido";
 
-    if (!inputs.month) newErrors.month = 'Campo obrigatório';
-    else if (inputs.month < 1 || inputs.month > 12) newErrors.month = 'Insira um mês válido';
+    if (!inputs.month) newErrors.month = "Campo obrigatório";
+    else if (inputs.month < 1 || inputs.month > 12)
+      newErrors.month = "Insira um mês válido";
 
-    if (!inputs.year) newErrors.year = 'Campo obrigatório';
-    else if (inputs.year > currentYear) newErrors.year = 'Ano futuro é inválido';
+    if (!inputs.year) newErrors.year = "Campo obrigatório";
+    else if (inputs.year > currentYear)
+      newErrors.year = "Ano futuro é inválido";
 
-    // Validação de data real
-    if (!Object.values(newErrors).some(error => error !== '')) {
+    if (!Object.values(newErrors).some((error) => error !== "")) {
       const day = parseInt(inputs.day);
       const month = parseInt(inputs.month);
       const year = parseInt(inputs.year);
-      
+
       const daysInMonth = new Date(year, month, 0).getDate();
       if (day > daysInMonth) {
         newErrors.day = `Mês ${month} só tem ${daysInMonth} dias`;
@@ -40,12 +53,12 @@ function App() {
 
       const inputDate = new Date(year, month - 1, day);
       if (inputDate > today) {
-        newErrors.generic = 'Data não pode ser futura';
+        newErrors.generic = "Data não pode ser futura";
       }
     }
 
     setErrors(newErrors);
-    return !Object.values(newErrors).some(error => error !== '');
+    return !Object.values(newErrors).some((error) => error !== "");
   };
 
   const calculateAge = () => {
@@ -75,7 +88,7 @@ function App() {
   };
 
   const handleInputChange = (key, value) => {
-    setInputs(prev => ({ ...prev, [key]: value }));
+    setInputs((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -96,15 +109,19 @@ function App() {
                 name={item.name}
                 placeholder={item.placeholder}
                 value={inputs[item.key]}
-                error={errors[item.key]}
+                error={
+                  errors.generic && !errors[item.key]
+                    ? errors.generic
+                    : errors[item.key]
+                }
+                showErrorBorder={!!errors.generic || !!errors[item.key]}
                 min={item.min}
                 max={item.max}
                 onChange={(value) => handleInputChange(item.key, value)}
               />
             ))}
           </div>
-
-          <div className="relative mt-6 md:mt-8 h-16 md:h-24">
+          <div className="relative mt-6 md:mt-8 h-auto">
             <hr className="border-[#6F6E6E] absolute top-1/2 w-full" />
             <button
               type="submit"
