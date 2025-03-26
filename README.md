@@ -34,8 +34,8 @@ Uma aplicação web responsiva para calcular a idade com base na data de nascime
 │   ├── assets/
 │   │   └── react.svg
 │   ├── components/
-│   │   ├── dmy.tsx
-│   │   └── yo.tsx
+│   │   ├── dmy.jsx
+│   │   └── yo.jsx
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
