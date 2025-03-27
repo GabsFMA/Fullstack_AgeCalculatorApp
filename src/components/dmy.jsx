@@ -11,7 +11,7 @@ function Dmy({ name, placeholder, value, error, showErrorBorder, min, max, onCha
         {name}
       </h1>
       <div
-        className={`bg-transparent w-full md:w-[140px] lg:w-[160px] h-12 md:h-14 lg:h-16 border-[1px] rounded-lg md:rounded-[8px] shadow-lg ${
+        className={`bg-transparent w-full md:w-[120px] lg:w-[160px] h-12 md:h-14 lg:h-16 border-[1px] rounded-lg md:rounded-[8px] shadow-lg ${
           showErrorBorder ? "border-red-500" : "border-[#6F6E6E]"
         }`}
       >

@@ -53,7 +53,7 @@ function App() {
 
       const inputDate = new Date(year, month - 1, day);
       if (inputDate > today) {
-        newErrors.generic = "Data não pode ser futura";
+        newErrors.generic = "Data futura é invalida";
       }
     }
 
@@ -99,7 +99,7 @@ function App() {
   };
 
   return (
-    <div className="bg-[#fff] w-full max-w-[1000px] h-[650px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-[100px] lg:rounded-br-[100px]">
+    <div className="bg-[#fff] w-full max-w-[1000px] min-h-[500px] lg:h-[650px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-[50px] lg:rounded-br-[100px]">
       <div className="m-6 md:m-12 lg:m-16 flex flex-col gap-4 lg:gap-6">
         <form onSubmit={handleSubmit} noValidate>
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 w-full">
