@@ -52,7 +52,7 @@ Uma aplicação web responsiva para calcular a idade com base na data de nascime
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/calculadora-idade.git
+git clone https://github.com/GabsFMA/Fullstack_AgeCalculatorApp.git
 ```
 2. Instale as dependências:
 ```bash
